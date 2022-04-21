@@ -13,7 +13,7 @@ This application can be run by downloading the repository and running the `npm r
 Users will be able to create or delete a user profile with a username and email address, add thoughts and add or remove friends. Users will also be able to remove thoughts and add or remove reactions to those thoughts. Users will also be able to get a list of all the current users and their correspondinig thoughts and friends.
 
 ## Video Demonstration
-<iframe width="560px" height="320px" allowfullscreen="true" allow="autoplay *" src="https://bootcampspot.instructuremedia.com/embed/c6697d43-d53d-49a9-9db8-0a25451dac6e" frameborder="0"></iframe>
+[![Demonstration Video](<img width="1197" alt="image" src="https://user-images.githubusercontent.com/86696492/164565914-f0f9be88-ae7c-4f5a-a049-1c20f3a63177.png">)](https://bootcampspot.instructuremedia.com/embed/c6697d43-d53d-49a9-9db8-0a25451dac6e "Demonstration")
 
 ## Information
 [Repository](https://github.com/nicolalenee/social-media-api)
