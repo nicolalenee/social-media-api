@@ -23,16 +23,21 @@ const UserSchema = new Schema(
     },
     // thoughts is an array of ids that references the Thought model
     thoughts: [
-      // {
-      //   type: Schema.Types.ObjectId,
-      //   ref: 'Thought'
-      // }
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Thought'
+      }
     ],
     // friends is an array of ids that self-references the User model 
-    friends: [
-      
-    ]
+    friends: [this]
+  },
+  {
+    toJSON: {
+      virtuals: true
+    },
+    id: false
   }
+ 
 );
 
 // create the model using the schema 
