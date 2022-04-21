@@ -1,3 +1,4 @@
+const express = require('express');
 const { User } = require('../models');
 
 const userController = {
@@ -39,21 +40,42 @@ const userController = {
     .catch(err => res.status(400).json(err));
   },
   // update a User by id
-  updateUser({ params, body }, res) {
-    User.findOneAndUpdate(
-      { _id: params.id }, 
-      body, 
-      { new: true}
-    )
+  updateUser({params, body}, res) {
+    User.findOneAndUpdate({_id: params.id}, body, { new: true, runValidators: true })
     .then(dbUserData => {
       if (!dbUserData) {
-        // if no info found, return 404 error and return
-        res.status(404).json({ message: 'No user found with this id!' });
+        res.status(404).json({ message: 'No pizza found with this id!'})
         return;
       }
       res.json(dbUserData);
     })
     .catch(err => res.status(400).json(err));
+  },
+  // add a friend
+  addFriend({ params }, res) {
+    User.findOneAndUpdate(
+      { _id: params.userId },
+      { $push: { friends: { friendId: params.friendId } } },
+      { new: true }
+    )
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No user found with this id! '});
+        return;
+      }
+      res.json(dbUserData)
+    })
+    .catch(err => res.json(err));
+  },
+  //remove a friend
+  removeFriend({ params }, res) {
+    User.findOneAndUpdate(
+      { _id: params.userId },
+      { $pull: { friends: { friendId: params.friendId } } },
+      { new: true }
+    )
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => res.json(err));
   },
   // delete a user by its id
   deleteUser({ params }, res) {

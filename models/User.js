@@ -29,7 +29,7 @@ const UserSchema = new Schema(
       }
     ],
     // friends is an array of ids that self-references the User model 
-    friends: [this]
+    friends: [ this ]
   },
   {
     toJSON: {
@@ -39,6 +39,8 @@ const UserSchema = new Schema(
   }
  
 );
+
+// virtual that counts how many friends a user has 
 
 // create the model using the schema 
 const User = model('User', UserSchema);
