@@ -1,10 +1,22 @@
 const router = require('express').Router();
+
 const { 
+  getAllThoughts,
+  getThoughtById,
   addThought, 
   removeThought,
   addReaction,
   removeReaction
 } = require('../../controllers/thought-controller');
+
+// get all thoughts 
+  // -->  api/thoughts
+router.route('/').get(getAllThoughts);
+
+// get a single thought by its Id
+  // --> api/thoughts/id
+router.route('/:id').get(getThoughtById);
+
 
 // post a new thought to a specific user
   // -->  api/thoughts/userId
